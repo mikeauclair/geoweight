@@ -15,9 +15,11 @@ defmodule Geoweight.Router do
 
     get "/", PageController, :index
   end
-
+  
   # Other scopes may use custom stacks.
-  # scope "/api", Geoweight do
-  #   pipe_through :api
-  # end
+  scope "/api", Geoweight.Api do
+    pipe_through :api
+
+    resources "geocode", GeocodeController
+  end
 end
